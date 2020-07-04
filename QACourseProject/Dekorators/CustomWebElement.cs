@@ -42,7 +42,6 @@ namespace StabilizeTestsDemos.ThirdVersion
 
             return element;
         }
-
         public List<CustomWebElement> FindElements(By by)
         {
             var elements = new List<CustomWebElement>();
@@ -52,42 +51,33 @@ namespace StabilizeTestsDemos.ThirdVersion
                 CustomWebElement element = new CustomWebElement(_webDriver, nativeWebElement, by);
                 elements.Add(element);
             }
-
             return elements;
         }
-
         public Size Size => WrappedElement.Size;
-
         public Point Location => WrappedElement.Location;
-
         public void Click()
         {
             WaitToBeClickable(By);
             _webElement?.Click();
         }
-
         public CustomWebElement SetText(string text)
         {
             _webElement.Clear();
             _webElement.SendKeys(text);
             return this;
         }
-
         public void Submit()
         {
             _webElement.Submit();
         }
-
         public string GetAttribute(string attributeName)
         {
             return _webElement?.GetAttribute(attributeName);
         }
-
         public string GetCssValue(string cssValue)
         {
             return _webElement.GetCssValue(cssValue);
         }
-
         private void WaitToBeClickable(By by)
         {
             var webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
