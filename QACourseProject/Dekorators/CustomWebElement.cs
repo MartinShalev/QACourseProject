@@ -69,10 +69,15 @@ namespace StabilizeTestsDemos.ThirdVersion
         {
             return _webElement.GetCssValue(cssValue);
         }
-        private void WaitToBeClickable(By by)
+        private void WaitToBeVisible(By by)
         {
             var webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
             webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(by));
+        } 
+        private void WaitToBeClickable(By by)
+        {
+            var webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
+            webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(by));
         }
     }
 }
