@@ -1,13 +1,6 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using ProjectInProgres.Pages.GoogleSearchPages;
-using StabilizeTestsDemos.ThirdVersion;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace ProjectInProgres.Tests.GoogleSearch
 {
@@ -37,11 +30,7 @@ namespace ProjectInProgres.Tests.GoogleSearch
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
+            Driver.GetScreenShot();
             Driver.Quit();
         }
     }

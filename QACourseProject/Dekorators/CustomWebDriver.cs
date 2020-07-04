@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -16,11 +18,8 @@ namespace StabilizeTestsDemos.ThirdVersion
     {
         private IWebDriver _nativeWebDriver;
         private WebDriverWait _webDriverWait;
-
         public IWebDriver WrappedDriver => _nativeWebDriver;
-
         public WebDriverWait Wait => _webDriverWait;
-
         public void Start(Browser browser)
         {   
             _nativeWebDriver = browser switch
@@ -33,10 +32,8 @@ namespace StabilizeTestsDemos.ThirdVersion
                 Browser.InternetExplorer => new InternetExplorerDriver(Environment.CurrentDirectory),
                 _ => throw new ArgumentOutOfRangeException(nameof(browser), browser, null),
             };
-            _webDriverWait = new WebDriverWait(_nativeWebDriver, TimeSpan.FromSeconds(30));
-            
+            _webDriverWait = new WebDriverWait(_nativeWebDriver, TimeSpan.FromSeconds(30));          
         }
-
         public void StartHeadless(Browser browser)
         {
             var argument = "-headless";
@@ -61,7 +58,6 @@ namespace StabilizeTestsDemos.ThirdVersion
                     throw new ArgumentOutOfRangeException(nameof(browser), browser, null);
             }
             _webDriverWait = new WebDriverWait(_nativeWebDriver, TimeSpan.FromSeconds(30));
-
         }
 
         public void Quit()
@@ -77,7 +73,6 @@ namespace StabilizeTestsDemos.ThirdVersion
 
             return element;
         }
-
         public List<CustomWebElement> FindElements(By locator)
         {
             ReadOnlyCollection<IWebElement> nativeWebElements =
@@ -91,28 +86,29 @@ namespace StabilizeTestsDemos.ThirdVersion
 
             return elements;
         }
-
         public void Navigate(string url)
         {
             WrappedDriver.Navigate().GoToUrl(url);
         }
-
         public CustomWebElement ScrollTo(CustomWebElement element)
         {
             ((IJavaScriptExecutor)element.WrappedDriver).ExecuteScript("arguments[0].scrollIntoView(true);", element.WrappedElement);
             return element;
         }
-
         public void PageReady(int timeoutSec = 15)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)WrappedDriver;
             WebDriverWait wait = new WebDriverWait(WrappedDriver, new TimeSpan(0, 0, timeoutSec));
             wait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "complete");
         }
-
-      
-
-
+        public void GetScreenShot()
+        {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenShot = ((ITakesScreenshot)WrappedDriver).GetScreenshot();
+                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
+            }
+        }
     }
 
 }

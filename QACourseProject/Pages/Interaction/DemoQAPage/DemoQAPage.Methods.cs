@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using ProjectInProgres.Pages.PracticsForm;
+﻿using ProjectInProgres.Pages.PracticsForm;
 using StabilizeTestsDemos.ThirdVersion;
 
 namespace ProjectInProgres.Pages

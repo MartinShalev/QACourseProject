@@ -2,10 +2,6 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages.DroppablePage;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace ProjectInProgres.Tests.Interactions
 {
@@ -23,18 +19,15 @@ namespace ProjectInProgres.Tests.Interactions
         [Test]
         public void DropBoxOnTarget()
         {
-            
             var colorBefore = _droppablePage.GetColorOfTargetBox();
-            
+
             Builder.DragAndDrop(_droppablePage.SourseBox.WrappedElement,
                 _droppablePage.TargertBox.WrappedElement).Perform();
 
             var colorAfter = _droppablePage.GetColorOfTargetBox();
 
             Assert.AreNotEqual(colorBefore, colorAfter);
-
         }
-
         [Test]
         public void DropBoxOutOfTarget()
         {
@@ -45,12 +38,11 @@ namespace ProjectInProgres.Tests.Interactions
             var colorAfter = _droppablePage.GetColorOfTargetBox();
 
             Assert.AreEqual(colorBefore, colorAfter);
-
         }
         [Test]
         public void TargetColorNotChanged_When_DragNotAcceptableElement()
+
         {
-            
             _droppablePage.AcceptSection.Click();
 
             var colorBefore = _droppablePage.GetColorOfTargetBox();
@@ -65,17 +57,10 @@ namespace ProjectInProgres.Tests.Interactions
             Assert.AreEqual(colorBefore, colorAfter);
         }
 
-
-
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
     }

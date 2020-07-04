@@ -3,8 +3,6 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages.SelektablePage;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectInProgres.Tests.Interactions
 {
@@ -12,14 +10,12 @@ namespace ProjectInProgres.Tests.Interactions
     public class SelectableTest : BaseTest
     {
         private SelektablePage _selectablePage;
-
         [SetUp]
         public void SetUp()
         {
             Initialize();
             Driver.Navigate("http://demoqa.com/selectable");
             _selectablePage = new SelektablePage(Driver);
-
         }
         [Test]
         public void SelectItemColorChange_When_SelectItem([Range(0, 3)] int index)
@@ -30,7 +26,6 @@ namespace ProjectInProgres.Tests.Interactions
 
             _selectablePage.AssertBlueBackGroundFor(_selectablePage.Listoptions[index]);
         }
-
         [Test]
         public void AllItemsColorChanged_When_MoreThanIOneItem()
         {
@@ -41,20 +36,13 @@ namespace ProjectInProgres.Tests.Interactions
                 option.Click();
 
                 _selectablePage.AssertBlueBackGroundFor(option);
-
             }
-
         }
 
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
     }

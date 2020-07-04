@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using StabilizeTestsDemos.ThirdVersion;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectInProgres.Pages.QAautomation
 {

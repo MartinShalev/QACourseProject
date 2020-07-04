@@ -7,12 +7,10 @@ using ProjectInProgres.Tests;
 
 namespace LiveDemoSeleniumAdvanced
 {
-
-    public class Navigation_Test : BaseTest
+    public class NavigationTests : BaseTest
     {
         private HomePage _homePage;
         private DemoQAPage _demoQaPage;
-
 
         [SetUp]
         public void SetUp()
@@ -29,11 +27,8 @@ namespace LiveDemoSeleniumAdvanced
         [TestCase("Resizable")]
         [TestCase("Droppable")]
         [TestCase("Dragabble")]
-
-
         public void SuccessfullyPageLoaded_When_NavigateToSortable(string sectionName)
         {
-
             _homePage.CategotyButton("Interactions").Click();
             
             Driver.ScrollTo(_demoQaPage.SubMenu(sectionName));
@@ -46,12 +41,7 @@ namespace LiveDemoSeleniumAdvanced
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
     }

@@ -2,11 +2,6 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-
 
 namespace ProjectInProgres.Tests
 {
@@ -14,7 +9,6 @@ namespace ProjectInProgres.Tests
     public class SortableTests : BaseTest
     {
         private SortablePage _sortablePage;
-
         [SetUp]
         public void SetUp()
         {
@@ -23,20 +17,15 @@ namespace ProjectInProgres.Tests
 
             _sortablePage = new SortablePage(Driver);
             _sortablePage.NaviteTo();
-
         }
-
         [Test]
         public void OptionPlaceIsSwitch_When_DragAndDropUnderOtherOption()
         {
-
             var index = 1;
 
             Builder.DragAndDropToOffset(_sortablePage.ListOfOptions[index].WrappedElement, 0, 50).Perform();
 
             _sortablePage.AssertTextByIndex("Two", index + 1);
-
-
         }
 
         [Test]
@@ -51,18 +40,10 @@ namespace ProjectInProgres.Tests
 
             _sortablePage.AssertTextByIndex("Five", index + 1);
         }
-
-
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
     }

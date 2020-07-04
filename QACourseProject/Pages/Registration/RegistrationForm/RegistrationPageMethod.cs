@@ -1,10 +1,5 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium.Support.UI;
 using StabilizeTestsDemos.ThirdVersion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ProjectInProgres.Pages.PracticsForm
 {
@@ -15,8 +10,6 @@ namespace ProjectInProgres.Pages.PracticsForm
         {
         }
         public override string Url => "http://automationpractice.com/index.php";
-
-
         public void FillRegistrationForm(UserModel user)
         {
             Gender(user.Gender).Click();
@@ -28,8 +21,8 @@ namespace ProjectInProgres.Pages.PracticsForm
             YearOfBirth.WrappedElement.SendKeys(user.YearOfBirth);
             Addres.SetText(user.Addres);
             City.SetText(user.City);
-            new SelectElement(State.WrappedElement).SelectByValue(user.State);
-            PostalCode.SetText(user.PostalCode);
+            new SelectElement(State.WrappedElement).SelectByValue(user.State.ToString());
+            PostalCode.SetText(user.PostalCode.ToString());
             MobilePhone.SetText(user.MobilePhone);
             SubmitButton.Click();
         }

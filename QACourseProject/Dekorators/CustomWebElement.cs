@@ -3,7 +3,6 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Drawing;
 
 namespace StabilizeTestsDemos.ThirdVersion
@@ -13,26 +12,18 @@ namespace StabilizeTestsDemos.ThirdVersion
         private readonly IWebDriver _webDriver;
         private readonly IWebElement _webElement;
         private readonly By _by;
-
         public CustomWebElement(IWebDriver webDriver, IWebElement webElement, By by)
         {
             _webDriver = webDriver;
             _webElement = webElement;
             _by = by;
         }
-
         public IWebElement WrappedElement => _webElement;
-
         public IWebDriver WrappedDriver => _webDriver;
-
         public By By => _by;
-
         public string Text => _webElement?.Text;
-
         public bool? Enabled => _webElement?.Enabled;
-
         public bool? Displayed => _webElement?.Displayed;
-
         internal CustomWebElement FindElement(By by)
         {
             var wait = new WebDriverWait(WrappedDriver, TimeSpan.FromSeconds(20));

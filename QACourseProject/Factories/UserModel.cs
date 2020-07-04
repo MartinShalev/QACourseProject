@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProjectInProgres
 {
@@ -20,17 +17,14 @@ namespace ProjectInProgres
         public string AddresLastName { get; set; }
         public string Addres { get; set; }
         public string City { get; set; }
-        public string State { get; set; }
-        public string PostalCode { get; set; }
+        public int State { get; set; }
+        public int PostalCode { get; set; }
         public string Country { get; set; }
         public string MobilePhone { get; set; }
         public string ReferenceAddres { get; set; }
-
         public string GetFullName()
         {
             return FirstName + " " + LastName;
         }
-
-
     }
 }

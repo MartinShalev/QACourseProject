@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using StabilizeTestsDemos.ThirdVersion;
 using System.Collections.Generic;
 using System.Linq;

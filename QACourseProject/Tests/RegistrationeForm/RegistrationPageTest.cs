@@ -2,18 +2,15 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages.PracticsForm;
-
 namespace ProjectInProgres.Tests
 {
     [TestFixture]
-
     public class RegistrationPageTest : BaseTest
     {
         private UserModel _user;
         private HomePage _homePage;
         private SignPage _signPage;
         private RegistrationPage _registracionForm;
-
         [SetUp]
         public void SetUp()
         {
@@ -42,7 +39,6 @@ namespace ProjectInProgres.Tests
             _registracionForm.AssertAcountNameIs(_user.GetFullName());
 
         }
-
         [Test]
         public void RegistracionWithoutFirstName()
         {
@@ -53,8 +49,6 @@ namespace ProjectInProgres.Tests
 
             _registracionForm.AssertErrorMessageIs("firstname is required.");
         }
-
-
         [Test]
         public void RegistracionWithoutLastName()
         {
@@ -63,10 +57,8 @@ namespace ProjectInProgres.Tests
             _user.LastName = string.Empty;
             _registracionForm.FillRegistrationForm(_user);
 
-
             _registracionForm.AssertErrorMessageIs("lastname is required.");
         }
-
         [Test]
         public void RegistracionWithoutPassword()
         {
@@ -78,7 +70,6 @@ namespace ProjectInProgres.Tests
 
             _registracionForm.AssertErrorMessageIs("passwd is required.");
         }
-
         [Test]
         public void RegistracionWithoutAddress()
         {
@@ -88,13 +79,12 @@ namespace ProjectInProgres.Tests
 
            _registracionForm.AssertErrorMessageIs("address1 is required.");
         }
-
         [Test]
         public void RegistracionWithoutPostalCode()
         {
             NavigateToSignPage();
 
-            _user.PostalCode = string.Empty;
+            _user.PostalCode = 0 ;
             _registracionForm.FillRegistrationForm(_user);
 
            _registracionForm.AssertErrorMessageIs("The Zip/Postal code you've entered is invalid. It must follow this format: 00000");
@@ -103,15 +93,8 @@ namespace ProjectInProgres.Tests
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
-
     }
-
 }

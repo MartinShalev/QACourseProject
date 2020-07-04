@@ -1,9 +1,5 @@
-﻿using OpenQA.Selenium;
-using ProjectInProgres.Pages.PracticsForm;
+﻿using ProjectInProgres.Pages.PracticsForm;
 using StabilizeTestsDemos.ThirdVersion;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectInProgres.Pages.HmoePage.DraggablePage
 {
@@ -13,8 +9,5 @@ namespace ProjectInProgres.Pages.HmoePage.DraggablePage
         {
         }
         public override string Url => "http://demoqa.com/dragabble";
-
-
     }
-
 }

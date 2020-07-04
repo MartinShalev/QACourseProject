@@ -1,17 +1,12 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages.HmoePage.DraggablePage;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectInProgres.Tests.Interactions
 {
     public class DraggableTests : BaseTest
     {
         private DraggablePage _draggablePage;
-
         [SetUp]
         public void SetUp()
         {
@@ -31,7 +26,6 @@ namespace ProjectInProgres.Tests.Interactions
 
             Assert.AreEqual(yBefore, yAfter);
         }
-
         [Test]
         public void ElementYIsSame_When_DragAndDropOnlyYDiagonally()
         {
@@ -56,14 +50,8 @@ namespace ProjectInProgres.Tests.Interactions
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
-
     }
 }

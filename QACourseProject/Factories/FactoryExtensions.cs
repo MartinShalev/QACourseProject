@@ -1,7 +1,5 @@
 ﻿using AutoFixture;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectInProgres.UsersTools
 {
@@ -16,9 +14,7 @@ namespace ProjectInProgres.UsersTools
             {
                 randomChars[i] = (char)rnd.Next('a', 'z');
             }
-
             return new string(randomChars);
         }
-
     }
 }

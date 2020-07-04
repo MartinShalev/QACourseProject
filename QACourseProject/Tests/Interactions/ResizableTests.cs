@@ -2,9 +2,6 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages.ResizablePage;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectInProgres.Tests.Interactions
 {
@@ -18,13 +15,10 @@ namespace ProjectInProgres.Tests.Interactions
             Initialize();
             Driver.Navigate("http://demoqa.com/resizable");
             _resizablePage = new ResizablePage(Driver);
-
-
         }
         [Test]
         public void ResizableTest_1()
         {
-            //Put elemet locations in elemet
             var locationXBefore = _resizablePage.DragPoint.Location.X;
 
             Builder.ClickAndHold(_resizablePage.DragPoint.WrappedElement)
@@ -36,7 +30,6 @@ namespace ProjectInProgres.Tests.Interactions
 
             Assert.AreNotEqual(locationXBefore, locationXAfter);
         }
-
         [Test]
         public void ResizableTest_2()
         {
@@ -53,19 +46,11 @@ namespace ProjectInProgres.Tests.Interactions
 
             Assert.AreEqual(locationXBefore - 50, locationXAfter);
             Assert.AreEqual(locationYBefore - 50, locationYAfter);
-
         }
-
-
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                var screenShot = ((ITakesScreenshot)Driver.WrappedDriver).GetScreenshot();
-                screenShot.SaveAsFile($@"C:\ScreenshotImage\{TestContext.CurrentContext.Test.FullName}.png", ScreenshotImageFormat.Png);
-            }
-
+            Driver.GetScreenShot();
             Driver.Quit();
         }
     }

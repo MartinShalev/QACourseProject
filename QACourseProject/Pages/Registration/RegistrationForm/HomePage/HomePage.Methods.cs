@@ -1,8 +1,4 @@
-﻿using OpenQA.Selenium;
-using StabilizeTestsDemos.ThirdVersion;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StabilizeTestsDemos.ThirdVersion;
 
 namespace ProjectInProgres.Pages.PracticsForm
 {
@@ -12,12 +8,10 @@ namespace ProjectInProgres.Pages.PracticsForm
             :base(driver)
         {
         }
-
         public override string Url => "http://automationpractice.com/index.php";
         public void ClickSingButton()
         {
             SignInButton.Click();
         }
-    }
-    
+    }  
 }
