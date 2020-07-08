@@ -8,6 +8,6 @@ namespace ProjectInProgres.Pages.GoogleSearchPages
     {
         public CustomWebElement SearchSection => Driver.FindElement(By.XPath("//*[@class= 'gLFyf gsfi']"));
         public CustomWebElement FirstResult => Driver.FindElement(By.XPath("//*[@class= 'r']//*[@href='https://www.selenium.dev/']"));
-        public String FirstResultTitle => Driver.WrappedDriver.Title;
+        public string FirstResultTitle => Driver.WrappedDriver.Title;
     }
 }

@@ -28,6 +28,7 @@ namespace ProjectInProgres.Tests.QAAutomationTest
             {
               _QaAutomationPage.NavLearningButton.Click();
             }
+
             _QaAutomationPage.ActivModuls.Click();
             _QaAutomationPage.QaAutomationSection.Click();
             Driver.ScrollTo(_QaAutomationPage.CourseButton).Click();

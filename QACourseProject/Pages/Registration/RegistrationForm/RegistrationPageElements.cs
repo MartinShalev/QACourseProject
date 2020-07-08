@@ -5,7 +5,6 @@ namespace ProjectInProgres.Pages.PracticsForm
 {
     public partial class RegistrationPage : BasePage
     {
-
         public CustomWebElement Gender(string gender) =>
             Driver.FindElement(By.Id($"uniform-id_gender{gender}"));
         public CustomWebElement FirstName => Driver.FindElement(By.Id("customer_firstname"));

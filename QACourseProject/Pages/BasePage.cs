@@ -1,7 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using StabilizeTestsDemos.ThirdVersion;
-using System;
+﻿using StabilizeTestsDemos.ThirdVersion;
 
 namespace ProjectInProgres.Pages.PracticsForm
 {
@@ -9,8 +6,7 @@ namespace ProjectInProgres.Pages.PracticsForm
     {
         public BasePage(CustomWebDriver driver)
         {
-            Driver = driver;
-          
+            Driver = driver;          
         }
         public virtual string Url { get; }
         public CustomWebDriver Driver { get; }

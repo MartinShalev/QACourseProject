@@ -95,6 +95,11 @@ namespace StabilizeTestsDemos.ThirdVersion
             ((IJavaScriptExecutor)element.WrappedDriver).ExecuteScript("arguments[0].scrollIntoView(true);", element.WrappedElement);
             return element;
         }
+
+        public void ScrollUp(int offset)
+        {
+            ((IJavaScriptExecutor)WrappedDriver).ExecuteScript($"window.scrollBy(0, -{offset});");
+        }
         public void PageReady(int timeoutSec = 15)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)WrappedDriver;
