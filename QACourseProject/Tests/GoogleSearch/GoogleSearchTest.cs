@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using ProjectInProgres.Pages.GoogleSearchPages;
 
@@ -21,7 +22,7 @@ namespace ProjectInProgres.Tests.GoogleSearch
         public void SearchForSelenium()
         {
             _googleSearchPage.SearchSection.SendKeys("selenium");
-            _googleSearchPage.SearchSection.Click();
+            _googleSearchPage.SearchSection.SendKeys(Keys.Enter);
             
             _googleSearchPage.FirstResult.Click();
            

@@ -19,7 +19,7 @@ namespace ProjectInProgres.Tests
         public void Initialize()
         {
             Driver = new WebDriver();
-            Driver.StartHeadless(Browser.Chrome);
+            Driver.Start(Browser.Chrome);
             Builder = new Actions(Driver.WrappedDriver);
             JS = (IJavaScriptExecutor)Driver.WrappedDriver;
             Driver.WrappedDriver.Manage().Window.Maximize();
