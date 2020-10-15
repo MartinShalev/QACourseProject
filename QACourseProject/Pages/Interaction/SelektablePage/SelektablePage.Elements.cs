@@ -6,7 +6,7 @@ namespace ProjectInProgres.Pages.SelektablePage
 {
     public partial class SelektablePage
     {
-        public CustomWebElement Lists => Driver.FindElement(By.Id("verticalListContainer"));
-        public List<CustomWebElement> Listoptions => Driver.FindElements(By.XPath("//ul[@id='verticalListContainer']/li"));
+        public WebElement Lists => Driver.FindElement(By.Id("verticalListContainer"));
+        public List<WebElement> Listoptions => Driver.FindElements(By.XPath("//ul[@id='verticalListContainer']/li"));
     }
 }

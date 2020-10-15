@@ -5,9 +5,9 @@ namespace ProjectInProgres.Pages.HmoePage
 {
     public partial class HomePage : BasePage 
     {
-        public HomePage(CustomWebDriver driver)  : base(driver)
+        public HomePage(WebDriver driver)  : base(driver)
         {
         }
-        public override string Url => "http://demoqa.com";
+        public string URL { get { return "http://demoqa.com"; } }
     }
 }

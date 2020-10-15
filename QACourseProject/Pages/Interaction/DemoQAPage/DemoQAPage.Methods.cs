@@ -5,7 +5,7 @@ namespace ProjectInProgres.Pages
 {
     public partial class DemoQAPage : BasePage
     {
-        public DemoQAPage(CustomWebDriver driver) : base(driver)
+        public DemoQAPage(WebDriver driver) : base(driver)
         {
         }
     }

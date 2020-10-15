@@ -13,8 +13,8 @@ namespace ProjectInProgres.Tests.QAAutomationTest
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://softuni.bg");
             _QaAutomationPage = new QaAutomationPage(Driver);
+            Driver.GoToUrl(_QaAutomationPage.URL);
         }
         [Test]
         public void QACours()
@@ -31,14 +31,18 @@ namespace ProjectInProgres.Tests.QAAutomationTest
 
             _QaAutomationPage.ActivModuls.Click();
             _QaAutomationPage.QaAutomationSection.Click();
-            Driver.ScrollTo(_QaAutomationPage.CourseButton).Click();
+            Driver.ScrollToElement(_QaAutomationPage.CourseButton).Click();
            
             Assert.AreEqual("Курс QA Automation - май 2020 - Софтуерен университет", _QaAutomationPage.CoursePageTitle);
         }
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

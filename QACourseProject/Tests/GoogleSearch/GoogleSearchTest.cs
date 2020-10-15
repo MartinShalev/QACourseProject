@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium.Support.UI;
 using ProjectInProgres.Pages.GoogleSearchPages;
 
@@ -12,25 +13,29 @@ namespace ProjectInProgres.Tests.GoogleSearch
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://google.com");
             _googleSearchPage = new GoogleSearchPage(Driver);
+            Driver.GoToUrl(_googleSearchPage.URL);
 
         }
         [Test]
         public void SearchForSelenium()
         {
-            _googleSearchPage.SearchSection.SetText("selenium").Submit();
+            _googleSearchPage.SearchSection.SendKeys("selenium");
+            _googleSearchPage.SearchSection.Click();
             
             _googleSearchPage.FirstResult.Click();
            
-            Driver.Wait.Until(ExpectedConditions.TitleIs("SeleniumHQ Browser Automation"));
             Assert.AreEqual("SeleniumHQ Browser Automation", _googleSearchPage.FirstResultTitle);
         }
 
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

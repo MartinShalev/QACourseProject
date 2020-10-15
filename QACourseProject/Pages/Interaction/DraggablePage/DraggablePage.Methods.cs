@@ -5,9 +5,10 @@ namespace ProjectInProgres.Pages.HmoePage.DraggablePage
 {
     public partial class DraggablePage : BasePage
     {
-        public DraggablePage(CustomWebDriver driver) : base(driver)
+        public DraggablePage(WebDriver driver) : base(driver)
         {
         }
-        public override string Url => "http://demoqa.com/dragabble";
+        public string URL { get { return "http://demoqa.com/dragabble"; } }
+
     }
 }

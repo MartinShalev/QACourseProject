@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using ProjectInProgres.Pages.HmoePage.DraggablePage;
 
@@ -11,8 +12,8 @@ namespace ProjectInProgres.Tests.Interactions
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://demoqa.com/dragabble");
             _draggablePage = new DraggablePage(Driver);
+            Driver.GoToUrl(_draggablePage.URL);
         }
 
         [Test]
@@ -50,7 +51,11 @@ namespace ProjectInProgres.Tests.Interactions
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

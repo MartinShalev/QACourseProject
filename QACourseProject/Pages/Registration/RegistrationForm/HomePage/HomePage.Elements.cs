@@ -5,6 +5,6 @@ namespace ProjectInProgres.Pages.PracticsForm
 {
     public partial class HomePage : BasePage
     {
-        public CustomWebElement SignInButton => Driver.FindElement(By.ClassName("header_user_info"));
+        public WebElement SignInButton => Driver.FindElement(By.ClassName("header_user_info"));
     }    
 }

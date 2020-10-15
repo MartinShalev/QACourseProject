@@ -14,13 +14,13 @@ namespace ProjectInProgres.Tests.Interactions
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://demoqa.com/selectable");
             _selectablePage = new SelektablePage(Driver);
+            Driver.GoToUrl(_selectablePage.URL);
         }
         [Test]
         public void SelectItemColorChange_When_SelectItem([Range(0, 3)] int index)
         {
-            Driver.ScrollTo(_selectablePage.Listoptions[1]);
+            Driver.ScrollToElement(_selectablePage.Listoptions[1]);
 
             _selectablePage.Listoptions[index].Click();
 
@@ -29,7 +29,7 @@ namespace ProjectInProgres.Tests.Interactions
         [Test]
         public void AllItemsColorChanged_When_MoreThanIOneItem()
         {
-             Driver.ScrollTo(_selectablePage.Listoptions[1]);
+             Driver.ScrollToElement(_selectablePage.Listoptions[1]);
 
             foreach (var option in _selectablePage.Listoptions)
             {
@@ -42,7 +42,11 @@ namespace ProjectInProgres.Tests.Interactions
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

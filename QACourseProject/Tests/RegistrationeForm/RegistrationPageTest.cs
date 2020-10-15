@@ -16,11 +16,11 @@ namespace ProjectInProgres.Tests
         {
             Initialize();
             _homePage = new HomePage(Driver);
-            _homePage.NaviteTo();
+             Driver.GoToUrl(_homePage.URL);
             _user = UserFactory.CreateValidUser();
             _signPage = new SignPage(Driver);
             _registracionForm = new RegistrationPage(Driver);
-           
+
         }
         private void NavigateToSignPage()
         {
@@ -77,23 +77,27 @@ namespace ProjectInProgres.Tests
             _user.Addres = string.Empty;
             _registracionForm.FillRegistrationForm(_user);
 
-           _registracionForm.AssertErrorMessageIs("address1 is required.");
+            _registracionForm.AssertErrorMessageIs("address1 is required.");
         }
         [Test]
         public void RegistracionWithoutPostalCode()
         {
             NavigateToSignPage();
 
-            _user.PostalCode = 0 ;
+            _user.PostalCode = 0;
             _registracionForm.FillRegistrationForm(_user);
 
-           _registracionForm.AssertErrorMessageIs("The Zip/Postal code you've entered is invalid. It must follow this format: 00000");
+            _registracionForm.AssertErrorMessageIs("The Zip/Postal code you've entered is invalid. It must follow this format: 00000");
         }
 
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

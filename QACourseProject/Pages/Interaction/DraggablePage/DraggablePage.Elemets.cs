@@ -5,11 +5,11 @@ namespace ProjectInProgres.Pages.HmoePage.DraggablePage
 {
     public partial class DraggablePage
     {
-        public CustomWebElement AxisRestrictedTab => Driver.FindElement(By.Id("draggableExample-tab-axisRestriction"));
-        public CustomWebElement OnlyXBox => Driver.FindElement(By.Id("restrictedX"));
-        public CustomWebElement OnlyYBox => Driver.FindElement(By.Id("restrictedY"));
-        public CustomWebElement ContainerRestriction => Driver.FindElement(By.Id("draggableExample-tab-containerRestriction"));
-        public CustomWebElement Container  => Driver.FindElement(By.Id("containmentWrapper"));
-        public CustomWebElement DragabbleBox => Driver.FindElement(By.XPath("//div[@id='containmentWrapper']/div"));
+        public WebElement AxisRestrictedTab => Driver.FindElement(By.Id("draggableExample-tab-axisRestriction"));
+        public WebElement OnlyXBox => Driver.FindElement(By.Id("restrictedX"));
+        public WebElement OnlyYBox => Driver.FindElement(By.Id("restrictedY"));
+        public WebElement ContainerRestriction => Driver.FindElement(By.Id("draggableExample-tab-containerRestriction"));
+        public WebElement Container  => Driver.FindElement(By.Id("containmentWrapper"));
+        public WebElement DragabbleBox => Driver.FindElement(By.XPath("//div[@id='containmentWrapper']/div"));
     }          
 }

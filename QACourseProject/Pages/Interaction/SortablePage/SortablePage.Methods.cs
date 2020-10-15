@@ -4,10 +4,10 @@ namespace ProjectInProgres.Pages
 {
     public partial class SortablePage : DemoQAPage
     {
-        public SortablePage(CustomWebDriver driver)
+        public SortablePage(WebDriver driver)
             : base(driver)
         {
         }
-        public override string Url => "http://demoqa.com/sortable";       
+        public string URL { get { return "http://demoqa.com/sortable"; } }
     }
 }

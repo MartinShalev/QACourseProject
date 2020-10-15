@@ -5,10 +5,10 @@ namespace ProjectInProgres.Pages.ResizablePage
 {
     public partial class ResizablePage : BasePage
     {
-        public ResizablePage(CustomWebDriver driver)
-            :base(driver)
-        {       
+        public ResizablePage(WebDriver driver)
+            : base(driver)
+        {
         }
-        public override string Url => "http://demoqa.com/resizable";
+        public string URL { get { return "http://demoqa.com/resizable"; } }
     }
 }

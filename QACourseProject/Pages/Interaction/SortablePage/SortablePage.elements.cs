@@ -7,6 +7,6 @@ namespace ProjectInProgres.Pages
 {
     public partial class SortablePage
     {
-         public List<CustomWebElement> ListOfOptions => Driver.FindElements(By.XPath("//div[@id='demo-tabpane-list']//div[contains(@class, 'list-group-item')]")).ToList();
+         public List<WebElement> ListOfOptions => Driver.FindElements(By.XPath("//div[@id='demo-tabpane-list']//div[contains(@class, 'list-group-item')]")).ToList();
     }
 }

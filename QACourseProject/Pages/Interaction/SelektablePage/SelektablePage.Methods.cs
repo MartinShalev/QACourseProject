@@ -5,11 +5,11 @@ namespace ProjectInProgres.Pages.SelektablePage
 {
     public partial class SelektablePage : BasePage
     {
-        public SelektablePage(CustomWebDriver driver)
-            :base(driver)
+        public SelektablePage(WebDriver driver)
+            : base(driver)
         {
         }
-        public override string Url => "http://demoqa.com/selectable";
+        public string URL { get { return "http://demoqa.com/selectable"; } }
         public void SelectAllElements()
         {
             foreach (var option in Listoptions)

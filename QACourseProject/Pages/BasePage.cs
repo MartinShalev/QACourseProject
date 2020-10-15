@@ -1,19 +1,20 @@
-﻿using StabilizeTestsDemos.ThirdVersion;
+﻿using OpenQA.Selenium.Interactions;
+using StabilizeTestsDemos.ThirdVersion;
 
 namespace ProjectInProgres.Pages.PracticsForm
 {
     public abstract class BasePage
     {
-        public BasePage(CustomWebDriver driver)
+        public BasePage(WebDriver driver)
         {
-            Driver = driver;          
-        }
-        public virtual string Url { get; }
-        public CustomWebDriver Driver { get; }
+            Driver = driver;
+            Builder = new Actions(Driver.WrappedDriver);
 
-        public void NaviteTo()
-        {
-            Driver.Navigate(Url);
         }
+
+        public WebDriver Driver { get; }
+
+        protected Actions Builder { get; set; }
+
     }
 }

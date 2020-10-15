@@ -13,8 +13,8 @@ namespace ProjectInProgres.Tests.Interactions
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://demoqa.com/droppable");
             _droppablePage = new DroppablePage(Driver);
+            Driver.GoToUrl(_droppablePage.URL);
         }
         [Test]
         public void DropBoxOnTarget()
@@ -60,7 +60,11 @@ namespace ProjectInProgres.Tests.Interactions
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

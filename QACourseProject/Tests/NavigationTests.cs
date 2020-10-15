@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
+using ProjectInProgres;
 using ProjectInProgres.Pages;
 using ProjectInProgres.Pages.HmoePage;
 using ProjectInProgres.Tests;
@@ -18,7 +19,7 @@ namespace LiveDemoSeleniumAdvanced
             Initialize();
             _homePage = new HomePage(Driver);
             _demoQaPage = new DemoQAPage(Driver);
-            _homePage.NaviteTo();
+            Driver.GoToUrl(_homePage.URL);
         }
 
         [Test]
@@ -31,7 +32,7 @@ namespace LiveDemoSeleniumAdvanced
         {
             _homePage.CategotyButton("Interactions").Click();
             
-            Driver.ScrollTo(_demoQaPage.SubMenu(sectionName));
+            Driver.ScrollToElement(_demoQaPage.SubMenu(sectionName));
             _demoQaPage.SubMenu(sectionName).Click();
 
             _demoQaPage.AssertPageTitle(sectionName);
@@ -41,7 +42,11 @@ namespace LiveDemoSeleniumAdvanced
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

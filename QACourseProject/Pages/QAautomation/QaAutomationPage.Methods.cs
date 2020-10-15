@@ -5,9 +5,9 @@ namespace ProjectInProgres.Pages.QAautomation
 {
     public partial class QaAutomationPage : BasePage
     {
-        public QaAutomationPage(CustomWebDriver driver) : base(driver)
+        public QaAutomationPage(WebDriver driver) : base(driver)
         {
         }
-        public override string Url => "https://softuni.bg";
-    }  
+        public string URL { get { return "https://softuni.bg"; } }
+    }
 }

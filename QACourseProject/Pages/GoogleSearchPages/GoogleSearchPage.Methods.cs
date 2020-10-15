@@ -5,10 +5,10 @@ namespace ProjectInProgres.Pages.GoogleSearchPages
 {
     public partial class GoogleSearchPage : BasePage
     {
-        public GoogleSearchPage(CustomWebDriver driver)
+        public GoogleSearchPage(WebDriver driver)
             :base(driver)
         {
         }
-        public override string Url => "http://google.com";
+        public string  URL { get {return "http://google.com"; } }
     }
 }

@@ -13,8 +13,8 @@ namespace ProjectInProgres.Tests.Interactions
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://demoqa.com/resizable");
             _resizablePage = new ResizablePage(Driver);
+            Driver.GoToUrl(_resizablePage.URL);
         }
         [Test]
         public void ResizableTest_1()
@@ -50,7 +50,11 @@ namespace ProjectInProgres.Tests.Interactions
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }

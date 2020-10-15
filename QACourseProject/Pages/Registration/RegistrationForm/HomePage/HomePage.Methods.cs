@@ -4,14 +4,14 @@ namespace ProjectInProgres.Pages.PracticsForm
 {
     public partial class HomePage : BasePage
     {
-        public HomePage(CustomWebDriver driver)
-            :base(driver)
+        public HomePage(WebDriver driver)
+            : base(driver)
         {
         }
-        public override string Url => "http://automationpractice.com/index.php";
+        public string URL { get { return "http://automationpractice.com/index.php"; } }
         public void ClickSingButton()
         {
             SignInButton.Click();
         }
-    }  
+    }
 }

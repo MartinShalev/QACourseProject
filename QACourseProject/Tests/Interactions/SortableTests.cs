@@ -13,10 +13,8 @@ namespace ProjectInProgres.Tests
         public void SetUp()
         {
             Initialize();
-            Driver.Navigate("http://demoqa.com/sortable");
-
             _sortablePage = new SortablePage(Driver);
-            _sortablePage.NaviteTo();
+            Driver.GoToUrl(_sortablePage.URL);
         }
         [Test]
         public void OptionPlaceIsSwitch_When_DragAndDropUnderOtherOption()
@@ -33,7 +31,7 @@ namespace ProjectInProgres.Tests
         {
             var index = 4;
 
-            Driver.ScrollTo(_sortablePage.ListOfOptions[index]);
+            Driver.ScrollToElement(_sortablePage.ListOfOptions[index]);
 
             Builder.ClickAndHold(_sortablePage.ListOfOptions[index].WrappedElement)
                 .MoveToElement(_sortablePage.ListOfOptions[index + 1].WrappedElement).Release().Perform();
@@ -43,7 +41,11 @@ namespace ProjectInProgres.Tests
         [TearDown]
         public void TearDown()
         {
-            Driver.GetScreenShot();
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                TakeScreenshot(@"..\..\..\");
+            }
+
             Driver.Quit();
         }
     }
