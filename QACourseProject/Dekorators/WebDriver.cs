@@ -92,11 +92,6 @@ namespace StabilizeTestsDemos.ThirdVersion
             WrappedDriver.ToString();
         }
 
-        public void Submit()
-        {
-          
-        }
-
         public WebElement FindElement(By locator)
         {
             IWebElement nativeWebElement = _webDriverWait.Until(d => d.FindElement(locator));

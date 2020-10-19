@@ -20,7 +20,7 @@ namespace ProjectInProgres.Tests.Interactions
         [Test]
         public void SelectItemColorChange_When_SelectItem([Range(0, 3)] int index)
         {
-            Driver.ScrollToElement(_selectablePage.Listoptions[1]);
+            Driver.ScrollDown(50);
 
             _selectablePage.Listoptions[index].Click();
 
@@ -29,7 +29,7 @@ namespace ProjectInProgres.Tests.Interactions
         [Test]
         public void AllItemsColorChanged_When_MoreThanIOneItem()
         {
-             Driver.ScrollToElement(_selectablePage.Listoptions[1]);
+             Driver.ScrollDown(50);
 
             foreach (var option in _selectablePage.Listoptions)
             {
