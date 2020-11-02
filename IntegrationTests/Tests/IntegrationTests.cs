@@ -27,7 +27,7 @@ namespace IntegrationTests
         }
 
         [Test]
-        public void Test_A_PostBookForAuthor()
+        public void PostBookForAuthor()
         {
             var response = PostNewAuthor(_author, _restClient);
 
@@ -42,7 +42,7 @@ namespace IntegrationTests
         }
 
         [Test]
-        public void Test_B_GetBookForAuthor()
+        public void GetBookForAuthor()
         {
             var responseAfterGetBookFromAuthor = GetBookForAuthor(_postedAuthor, _postedBook, _restClient);
 
@@ -55,7 +55,7 @@ namespace IntegrationTests
         }
 
         [Test]
-        public void Test_C_DeleteBookForAuthor()
+        public void DeleteBookForAuthor()
         {
             var responseAfterDeletingABookFromAuthor = DeleteBookForAuthor(_postedAuthor, _postedBook, _restClient);
 
