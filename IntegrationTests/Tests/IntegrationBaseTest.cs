@@ -1,6 +1,5 @@
 using IntegrationTests.JsonExtensions;
 using IntegrationTests.Models;
-using NUnit.Framework;
 using RestSharp;
 
 namespace IntegrationTests

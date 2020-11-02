@@ -1,9 +1,9 @@
-﻿namespace IntegrationTests.Models
-{
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
+namespace IntegrationTests.Models
+{
     public class Book
     {
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
